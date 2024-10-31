@@ -1,0 +1,16 @@
+# ninja log v6
+5	709	1730017965227983574	CMakeFiles/math_test.dir/math.cc.o	13ddce7d249c5ce
+3	4914	1730018899843966837	CMakeFiles/math_test.dir/math_test.cc.o	1c8e38b45043d9a
+4914	5095	1730018904755966749	math_test	44aa71e7269e1658
+3	3314	1730019789247950910	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+6	1402	1730019789251950910	CMakeFiles/math_test.dir/geometry.cc.o	5c427059263c0864
+2	1737	1730022314695905684	CMakeFiles/math_test.dir/geometry.cc.o	5c427059263c0864
+4	4473	1730022331399905385	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+2	3164	1730022367559904737	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+3	4324	1730022824487896554	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+32	2464	1730022946255894374	CMakeFiles/math_test.dir/geometry.cc.o	5c427059263c0864
+12	4598	1730022946235894374	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+3	945	1730023614527882406	CMakeFiles/math_test.dir/geometry.cc.o	5c427059263c0864
+945	1066	1730023615471882389	math_test	44aa71e7269e1658
+3	4745	1730023835439878450	CMakeFiles/math_test.dir/geometry_test.cc.o	68582903c1d0c0bf
+4745	4880	1730023840179878365	math_test	44aa71e7269e1658

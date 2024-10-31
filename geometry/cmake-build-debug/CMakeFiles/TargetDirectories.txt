@@ -1,0 +1,3 @@
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_1/geometry/cmake-build-debug/CMakeFiles/math_test.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_1/geometry/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_1/geometry/cmake-build-debug/CMakeFiles/rebuild_cache.dir
