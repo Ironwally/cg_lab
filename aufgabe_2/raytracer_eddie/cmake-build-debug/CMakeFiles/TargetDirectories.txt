@@ -1,0 +1,5 @@
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer_eddie/cmake-build-debug/CMakeFiles/math_test.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer_eddie/cmake-build-debug/CMakeFiles/geometry_test.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer_eddie/cmake-build-debug/CMakeFiles/raytracer_test.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer_eddie/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer_eddie/cmake-build-debug/CMakeFiles/rebuild_cache.dir

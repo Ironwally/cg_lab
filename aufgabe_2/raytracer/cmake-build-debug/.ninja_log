@@ -1,0 +1,16 @@
+# ninja log v6
+3	1365	1730800299863996534	CMakeFiles/math_test.dir/math.cc.o	cc53001fd9b1abd0
+2	5190	1730800299859996534	CMakeFiles/math_test.dir/math_test.cc.o	ee6b08071c92a787
+1112	1240	1730378881203981026	math_test	fa97c1443624c3ca
+4	5182	1730800299863996534	CMakeFiles/math_test.dir/geometry_test.cc.o	49e8ff890ba29f0b
+1365	2711	1730800301223996495	CMakeFiles/math_test.dir/geometry.cc.o	fce017216bf12aab
+4	1299	1730389171983990777	CMakeFiles/math_test.dir/raytracer.cc.o	64e55e93bcac8cd9
+5	32	1730389171987990777	CMakeFiles/math_test.dir/raytracer/configuration/configuration.cpp.o	4e9c5b08fbcac027
+4	27	1730800635403986991	CMakeFiles/math_test.dir/raytracer/configuration/configuration.cpp.o	4e9c5b08fbcac027
+5	29	1730800635407986991	CMakeFiles/math_test.dir/raytracer/tracer/Tracer.cpp.o	d357fc9812b1fa6f
+3	1371	1730800857367980679	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
+2	1809	1730800934459978487	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
+3	1550	1730800992995976822	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
+3	1422	1730801016263976160	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
+3	1306	1730801062743974838	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
+10	7256	1730801229247970103	CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o	39ae0886f472b815
