@@ -82,9 +82,14 @@ struct Vector {
   // returns the scalar (inner) product of two Vectors
   template <class F, size_t K>    
   friend F operator*(Vector<F, K> vector1, const Vector<F, K> vector2);
+
+  // returns if two Vectors are equal
+  template <class F, size_t K>
+  friend bool operator==(const Vector<F, K>& lhs, const Vector<F, K>& rhs);
 };
 
 static const long double PI = std::acos(-1.0L);
+
 
 // shorter comfortable type names
 typedef Vector<float, 2u> Vector2df;

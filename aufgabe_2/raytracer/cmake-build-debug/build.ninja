@@ -120,6 +120,85 @@ build math_test: CXX_EXECUTABLE_LINKER__math_test_Debug CMakeFiles/math_test.dir
   TARGET_FILE = math_test
   TARGET_PDB = math_test.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target raytracer
+
+
+#############################################
+# Order-only phony target for raytracer
+
+build cmake_object_order_depends_target_raytracer: phony || .
+
+build CMakeFiles/raytracer.dir/math_test.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/math_test.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/math_test.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+build CMakeFiles/raytracer.dir/math.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/math.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/math.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+build CMakeFiles/raytracer.dir/geometry_test.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/geometry_test.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/geometry_test.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+build CMakeFiles/raytracer.dir/geometry.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/geometry.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/geometry.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+build CMakeFiles/raytracer.dir/raytracer.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/raytracer.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+build CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/configuration/configuration.cpp || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir/raytracer/configuration
+
+build CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/tracer/Tracer.cpp || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir/raytracer/tracer
+
+build CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/screen/Screen.cpp || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir/raytracer/screen
+
+build CMakeFiles/raytracer.dir/raytracer_test.cc.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer_test.cc || cmake_object_order_depends_target_raytracer
+  DEP_FILE = CMakeFiles/raytracer.dir/raytracer_test.cc.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target raytracer
+
+
+#############################################
+# Link the executable raytracer
+
+build raytracer: CXX_EXECUTABLE_LINKER__raytracer_Debug CMakeFiles/raytracer.dir/math_test.cc.o CMakeFiles/raytracer.dir/math.cc.o CMakeFiles/raytracer.dir/geometry_test.cc.o CMakeFiles/raytracer.dir/geometry.cc.o CMakeFiles/raytracer.dir/raytracer.cc.o CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o CMakeFiles/raytracer.dir/raytracer_test.cc.o
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/raytracer.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = raytracer
+  TARGET_PDB = raytracer.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -154,7 +233,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/cmake-build-debug
 
-build all: phony math_test
+build all: phony math_test raytracer
 
 # =============================================================================
 # Built-in targets
