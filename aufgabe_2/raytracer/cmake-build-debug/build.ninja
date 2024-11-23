@@ -85,12 +85,6 @@ build CMakeFiles/math_test.dir/raytracer/configuration/configuration.cpp.o: CXX_
   OBJECT_DIR = CMakeFiles/math_test.dir
   OBJECT_FILE_DIR = CMakeFiles/math_test.dir/raytracer/configuration
 
-build CMakeFiles/math_test.dir/raytracer/tracer/Tracer.cpp.o: CXX_COMPILER__math_test_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/tracer/Tracer.cpp || cmake_object_order_depends_target_math_test
-  DEP_FILE = CMakeFiles/math_test.dir/raytracer/tracer/Tracer.cpp.o.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
-  OBJECT_DIR = CMakeFiles/math_test.dir
-  OBJECT_FILE_DIR = CMakeFiles/math_test.dir/raytracer/tracer
-
 build CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o: CXX_COMPILER__math_test_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/screen/Screen.cpp || cmake_object_order_depends_target_math_test
   DEP_FILE = CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
@@ -111,7 +105,7 @@ build CMakeFiles/math_test.dir/raytracer_test.cc.o: CXX_COMPILER__math_test_unsc
 #############################################
 # Link the executable math_test
 
-build math_test: CXX_EXECUTABLE_LINKER__math_test_Debug CMakeFiles/math_test.dir/math_test.cc.o CMakeFiles/math_test.dir/math.cc.o CMakeFiles/math_test.dir/geometry_test.cc.o CMakeFiles/math_test.dir/geometry.cc.o CMakeFiles/math_test.dir/raytracer.cc.o CMakeFiles/math_test.dir/raytracer/configuration/configuration.cpp.o CMakeFiles/math_test.dir/raytracer/tracer/Tracer.cpp.o CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o CMakeFiles/math_test.dir/raytracer_test.cc.o
+build math_test: CXX_EXECUTABLE_LINKER__math_test_Debug CMakeFiles/math_test.dir/math_test.cc.o CMakeFiles/math_test.dir/math.cc.o CMakeFiles/math_test.dir/geometry_test.cc.o CMakeFiles/math_test.dir/geometry.cc.o CMakeFiles/math_test.dir/raytracer.cc.o CMakeFiles/math_test.dir/raytracer/configuration/configuration.cpp.o CMakeFiles/math_test.dir/raytracer/screen/Screen.cpp.o CMakeFiles/math_test.dir/raytracer_test.cc.o
   FLAGS = -g
   LINK_LIBRARIES = -lraytracer_test  -lgtest  -lgtest_main
   OBJECT_DIR = CMakeFiles/math_test.dir
@@ -165,12 +159,6 @@ build CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o: CXX_
   OBJECT_DIR = CMakeFiles/raytracer.dir
   OBJECT_FILE_DIR = CMakeFiles/raytracer.dir/raytracer/configuration
 
-build CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/tracer/Tracer.cpp || cmake_object_order_depends_target_raytracer
-  DEP_FILE = CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
-  OBJECT_DIR = CMakeFiles/raytracer.dir
-  OBJECT_FILE_DIR = CMakeFiles/raytracer.dir/raytracer/tracer
-
 build CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o: CXX_COMPILER__raytracer_unscanned_Debug /home/blackrat/Desktop/arbeit/Computergrafik_Labor/aufgabe_2/raytracer/raytracer/screen/Screen.cpp || cmake_object_order_depends_target_raytracer
   DEP_FILE = CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -g -Wall -Wextra -Wpedantic -Wl,--stack,16777216
@@ -191,7 +179,7 @@ build CMakeFiles/raytracer.dir/raytracer_test.cc.o: CXX_COMPILER__raytracer_unsc
 #############################################
 # Link the executable raytracer
 
-build raytracer: CXX_EXECUTABLE_LINKER__raytracer_Debug CMakeFiles/raytracer.dir/math_test.cc.o CMakeFiles/raytracer.dir/math.cc.o CMakeFiles/raytracer.dir/geometry_test.cc.o CMakeFiles/raytracer.dir/geometry.cc.o CMakeFiles/raytracer.dir/raytracer.cc.o CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o CMakeFiles/raytracer.dir/raytracer/tracer/Tracer.cpp.o CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o CMakeFiles/raytracer.dir/raytracer_test.cc.o
+build raytracer: CXX_EXECUTABLE_LINKER__raytracer_Debug CMakeFiles/raytracer.dir/math_test.cc.o CMakeFiles/raytracer.dir/math.cc.o CMakeFiles/raytracer.dir/geometry_test.cc.o CMakeFiles/raytracer.dir/geometry.cc.o CMakeFiles/raytracer.dir/raytracer.cc.o CMakeFiles/raytracer.dir/raytracer/configuration/configuration.cpp.o CMakeFiles/raytracer.dir/raytracer/screen/Screen.cpp.o CMakeFiles/raytracer.dir/raytracer_test.cc.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/raytracer.dir
   POST_BUILD = :

@@ -12,12 +12,13 @@
 
 class Screen {
 private:
-    int width;
-    int height;
-    int length;
+    //Vector3df left,right,bottom,top;
     std::vector<Vectorclr> pixels;
     //Vector<Vectorclr, WIDTH * HEIGHT> pixels = {}; //include = {}? // old
 public:
+    int width;
+    int height;
+    int length;
     Screen() : Screen(1024,768,{0,0,0}) {}
     Screen(const int width, const int height) : Screen(width, height, {0,0,0}) {}
     explicit Screen(const int width, const int height, const Vectorclr start_color) {
@@ -32,12 +33,12 @@ public:
     void setPixelColor(Vectorclr color, const int x, const int y) {
         pixels[x + y * height] = color;
     }
-    Vectorclr getPixelColor(const int x, const int y) const
+    [[nodiscard]] Vectorclr getPixelColor(const int x, const int y) const
     {
         return pixels[x + y * height];
     }
 
-    std::vector<Vectorclr> getAllPixels() {
+    [[nodiscard]] std::vector<Vectorclr> getAllPixels() const {
         return pixels;
     }
     // returns if two Screens are equal

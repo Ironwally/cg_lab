@@ -7,6 +7,8 @@
 #include "raytracer/screen/Screen.h"
 #include "raytracer/configuration/configuration.h"
 #include "raytracer/objects/Camera.h"
+#include "raytracer/objects/Sphere3d.h"
+#include "raytracer/output_generator/Output_generator.h"
 #include "raytracer/tracer/Tracer.h"
 
 
@@ -25,7 +27,7 @@ int main(void) {
 
 
   // Create camera
-  const auto camera = Camera();
+  const auto camera = Camera(60);
   // Eine "Kamera", die von einem Augenpunkt aus in eine Richtung senkrecht auf ein Rechteck (das Bild) zeigt.
   // Für das Rechteck muss die Auflösung oder alternativ die Pixelbreite und -höhe bekannt sein.
   // Für ein Pixel mit Bildkoordinate kann ein Sehstrahl erzeugt werden.
@@ -40,14 +42,25 @@ int main(void) {
   // Create material
   // Das "Material" der Objektoberfläche mit ambienten, diffusem und reflektiven Farbanteil.
 
+  //Done
+
   // Create 3d objects
+  const auto sphere = Sphere3df({5,0,0}, 5);
+  const auto material = Material({0,0,0},{0,0,0},{0,0,0},0);
+  const auto sphere1 = Sphere3d(sphere, material);
+
+  const std::vector<Sphere3d> sceneSpheres = {sphere1};
   // Ein "Objekt", z.B. eine Kugel oder ein Dreieck, und dem zugehörigen Material der Oberfläche.
   // Im Prinzip ein Wrapper-Objekt, das mindestens Material und geometrisches Objekt zusammenfasst.
   // Kugel und Dreieck finden Sie in geometry.h/tcc
 
+  //Done
+
   // Create materialdefinitions
   // verschiedene Materialdefinition, z.B. Mattes Schwarz, Mattes Rot, Reflektierendes Weiss, ...
   // im wesentlichen Variablen, die mit Konstruktoraufrufen initialisiert werden.
+
+  //TODO
 
   // ??
   // Die folgenden Werte zur konkreten Objekten, Lichtquellen und Funktionen, wie Lambertian-Shading
@@ -56,6 +69,10 @@ int main(void) {
   // rendernde "Szene" zusammengefasst werden.
 
   // Create cornelbox/3d scene
+
+  //TODO someho put together trianges and spheres
+  //const std::vector<Object3d> scene = {sphere1};
+
   // Die Cornelbox aufgebaut aus den Objekten
   // Am besten verwendet man hier einen std::vector< ... > von Objekten.
 
@@ -75,13 +92,14 @@ int main(void) {
   // Am besten einen Zeiger auf das Objekt zurückgeben. Wenn dieser nullptr ist, dann gibt es kein sichtbares Objekt.
 
   // Create tracer
-  auto tracer = Tracer(screen, camera);
-  // The raytracing method. What does this mean? Raytrace EVERYTHING? (All shaders, etc.?)
+  auto tracer = Tracer(camera, sceneSpheres);
+  // The raytracing method. What does this mobjectsean? Raytrace EVERYTHING? (All shaders, etc.?)
   // Die rekursive raytracing-Methode. Am besten ab einer bestimmten Rekursionstiefe (z.B. als Parameter übergeben) abbrechen.
 
 
   // trace ray per pixel
-  tracer.tracePrimary();
+  tracer.tracePrimary(screen);
+  //tracer.createShadows();
 
   // Für jede Pixelkoordinate x,y
   //   Reihenfolge festlegen
@@ -90,9 +108,11 @@ int main(void) {
   //   Farbe mit raytracing-Methode bestimmen
   //   Beim Bildschirm die Farbe für Pixel x,y, setzten
 
+  // Generate image
+  constexpr auto genOut = Output_generator();
   // In SDL umwandeln
-
-
+  //genOut.saveSDL(tracer.screen);
+  genOut.savePPM(screen, "output.ppm");
   return 0;   
 }
 

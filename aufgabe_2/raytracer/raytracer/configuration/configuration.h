@@ -10,6 +10,6 @@
 const int AMOUNT_RAYS = 10;
 const int MAX_RECURSION_DEPTH = 5;
 
-typedef Vector<unsigned char, 3> Vectorclr;
+typedef Vector3df Vectorclr;
 
 #endif //CONFIGURATION_H

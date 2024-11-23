@@ -2,6 +2,8 @@
 #include "gtest/gtest.h"
 #include "raytracer/objects/Camera.h"
 #include "raytracer/configuration/configuration.h"
+#include "raytracer/objects/Sphere3d.h"
+#include "raytracer/objects/Triangle3d.h"
 #include "raytracer/tracer/Tracer.h"
 
 namespace {
@@ -27,12 +29,12 @@ namespace {
     */
 
     TEST(OBJECTS, create_sphere) {
-        Sphere3d sphere = Sphere3d(5, {0,0,1});
+        auto sphere = Sphere3d(5, {0,0,1});
         EXPECT_EQ(5, sphere.radius);
     }
     TEST(OBJECTS, create_wall) {
-        Wall3d wall = Wall3d(2,5,1, {0,0,1});
+        auto wall = Triangle3d(2,5,1, {0,0,1});
         EXPECT_EQ({0,0,1}, wall.getPos());
-        EXPECT_EQ(2 , wall.getSizeX());
+        EXPECT_EQ(2 , wall.getSize()[0]);
     }
 }
