@@ -1,4 +1,4 @@
-#include "raytracer/screen/Screen.h"
+#include "raytracer/objects/Screen.h"
 #include "gtest/gtest.h"
 #include "raytracer/objects/Camera.h"
 #include "raytracer/configuration/configuration.h"
@@ -32,9 +32,12 @@ namespace {
         auto sphere = Sphere3d(5, {0,0,1});
         EXPECT_EQ(5, sphere.radius);
     }
+    //Triangle only if sphere works perfectly
+    /*
     TEST(OBJECTS, create_wall) {
         auto wall = Triangle3d(2,5,1, {0,0,1});
         EXPECT_EQ({0,0,1}, wall.getPos());
         EXPECT_EQ(2 , wall.getSize()[0]);
     }
+    */
 }

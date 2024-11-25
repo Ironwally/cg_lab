@@ -6,7 +6,7 @@
 #define CAMERA_H
 
 #include "../../math.h"
-#include "../screen/Screen.h"
+#include "../objects/Screen.h"
 
 class Camera {
 public:

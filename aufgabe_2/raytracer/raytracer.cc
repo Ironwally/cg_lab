@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "raytracer/screen/Screen.h"
+#include "raytracer/objects/Screen.h"
 #include "raytracer/configuration/configuration.h"
 #include "raytracer/objects/Camera.h"
 #include "raytracer/objects/Sphere3d.h"
@@ -17,9 +17,14 @@
 // hängen höchstens von den vorhergehenden Datenstrukturen ab, aber nicht umgekehrt.
 
 int main(void) {
+  //auto room = std::vector<>;
+
   // Konfiguration
   // Bildschirm erstellen
-  auto screen = Screen(1024, 768);
+
+  //auto screen = Screen(1024, 768);
+  std::vector<Vector3df, int> screen = {Vector3df({0,0,0}),{0}};
+
   // Ein "Bildschirm", der das Setzen eines Pixels kapselt
   // Der Bildschirm hat eine Auflösung (Breite x Höhe)
   // Kann zur Ausgabe einer PPM-Datei verwendet werden oder

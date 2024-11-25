@@ -12,11 +12,9 @@ add_executable(math_test math_test.cc math.cc
         geometry.cc
         math.tcc
         raytracer.cc
-        raytracer/configuration/configuration.cpp
         raytracer/configuration/configuration.h
         raytracer/tracer/Tracer.h
-        raytracer/screen/Screen.cpp
-        raytracer/screen/Screen.h
+        raytracer/objects/Screen.h
         raytracer_test.cc
         raytracer/objects/Camera.h
         raytracer/objects/Camera.h
@@ -34,11 +32,9 @@ add_executable(raytracer math_test math_test.cc math.cc
         geometry.cc
         math.tcc
         raytracer.cc
-        raytracer/configuration/configuration.cpp
         raytracer/configuration/configuration.h
         raytracer/tracer/Tracer.h
-        raytracer/screen/Screen.cpp
-        raytracer/screen/Screen.h
+        raytracer/objects/Screen.h
         raytracer_test.cc
         raytracer/objects/Camera.h
         raytracer/objects/Camera.h

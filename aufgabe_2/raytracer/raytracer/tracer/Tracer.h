@@ -6,7 +6,7 @@
 #define TRACER_H
 
 #include "../../raytracer/configuration/configuration.h"
-#include "../../raytracer/screen/Screen.h"
+#include "../../raytracer/objects/Screen.h"
 #include "../../raytracer/objects/Camera.h"
 #include "../objects/Object3d.h"
 
@@ -27,7 +27,7 @@ public:
     {
         const auto pixels = screen->getAllPixels();
         constexpr auto length = sizeof(pixels)/sizeof(pixels[0]);
-        for (auto i=0;i<length;i++) {
+        for (unsigned long long i=0;i<length;i++) {
             const auto ray = Ray3df(camera.position, pixels[i]-camera.position);
             this->tracePrimary_single(ray);
         }

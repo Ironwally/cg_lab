@@ -22,7 +22,7 @@ public:
         //sdl2renderer übernehmen
         //save render via sdl library
 
-        return 'TODO';
+        return "TODO";
     }
 
     static void savePPM(const Screen& screen, const std::string& filename) {
