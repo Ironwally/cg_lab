@@ -13,8 +13,8 @@ class Sphere3d : public Object3d {
     Sphere3df shape;
     Material material;
 public:
+    Sphere3d() : Sphere3d(Sphere3df({0,0,0},0), Material({0,0,0},{0,0,0},{0,0,0},0)){}
     Sphere3d(const Sphere3df& sphere, const Material& mat) : Object3d(), shape(sphere), material(mat) {
-
     }
 
     bool intersects(const Ray3df& ray, Intersection_Context<float, 3>& context) const {

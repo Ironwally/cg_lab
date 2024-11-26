@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_compile_options(-g -Wall -Wextra -Wpedantic -Wl,--stack,16777216)
 
+include_directories("C:/msys64/ucrt64/include")
+link_directories("C:/msys64/ucrt64/lib")
+
 add_executable(math_test math_test.cc math.cc
         geometry_test.cc
         geometry.tcc
@@ -22,7 +25,7 @@ add_executable(math_test math_test.cc math.cc
         raytracer/objects/Material.h
         raytracer/objects/Triangle3d.h
         raytracer/objects/Object3d.h
-        raytracer/output_generator/Output_generator.h
+        raytracer/renderer/renderer.h
 )
 target_link_libraries(math_test raytracer_test gtest gtest_main)
 
@@ -41,5 +44,5 @@ add_executable(raytracer math_test math_test.cc math.cc
         raytracer/objects/Sphere3d.h
         raytracer/objects/Triangle3d.h
         raytracer/objects/Object3d.h
-        raytracer/output_generator/Output_generator.h
+        raytracer/renderer/renderer.h
 )

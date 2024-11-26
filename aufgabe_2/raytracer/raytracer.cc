@@ -8,7 +8,7 @@
 #include "raytracer/configuration/configuration.h"
 #include "raytracer/objects/Camera.h"
 #include "raytracer/objects/Sphere3d.h"
-#include "raytracer/output_generator/Output_generator.h"
+#include "raytracer/renderer/Renderer.h"
 #include "raytracer/tracer/Tracer.h"
 
 
@@ -17,13 +17,11 @@
 // hängen höchstens von den vorhergehenden Datenstrukturen ab, aber nicht umgekehrt.
 
 int main(void) {
-  //auto room = std::vector<>;
-
   // Konfiguration
   // Bildschirm erstellen
 
   //auto screen = Screen(1024, 768);
-  std::vector<Vector3df, int> screen = {Vector3df({0,0,0}),{0}};
+  //std::vector<Vector3df, int> screen = {Vector3df({0,0,0}),{0}};
 
   // Ein "Bildschirm", der das Setzen eines Pixels kapselt
   // Der Bildschirm hat eine Auflösung (Breite x Höhe)
@@ -103,7 +101,6 @@ int main(void) {
 
 
   // trace ray per pixel
-  tracer.tracePrimary(screen);
   //tracer.createShadows();
 
   // Für jede Pixelkoordinate x,y
@@ -114,10 +111,10 @@ int main(void) {
   //   Beim Bildschirm die Farbe für Pixel x,y, setzten
 
   // Generate image
-  constexpr auto genOut = Output_generator();
-  // In SDL umwandeln
-  //genOut.saveSDL(tracer.screen);
-  genOut.savePPM(screen, "output.ppm");
+  const auto renderer = Renderer();
+  renderer.renderSDL(camera);
+
+  //renderer.savePPM(screen, "output.ppm");
   return 0;   
 }
 

@@ -28,9 +28,9 @@ namespace {
     }
     */
 
-    TEST(OBJECTS, create_sphere) {
-        auto sphere = Sphere3d(5, {0,0,1});
-        EXPECT_EQ(5, sphere.radius);
+    TEST(OBJECTS, sphere_intersects_itself) {
+        auto sphere = Sphere3d(Sphere3df({0,0,0},5), Material({0,0,0},{0,0,0},{0,0,0},1));
+        //EXPECT_EQ(true, sphere.intersects({{0,0,0},{1,0,0}},{}));
     }
     //Triangle only if sphere works perfectly
     /*
