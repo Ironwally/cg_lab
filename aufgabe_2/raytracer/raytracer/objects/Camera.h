@@ -42,7 +42,6 @@ public:
 
         std::vector<Vectorclr> pixels = screen.getAllPixels();
         for (auto pixel : pixels) {
-
             //if (pixel.rays.empty()) break;
         }
 

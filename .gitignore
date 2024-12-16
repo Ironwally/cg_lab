@@ -2,10 +2,15 @@ aufgabe_2/raytracer_eddie
 aufgabe_2/raytracer_eddie2
 
 aufgabe_2/raytracer/cmake-build-debug
+aufgabe_2/raytracer_ver_2/cmake-build-debug
+aufgabe_2/raytracer_ver_3/cmake-build-debug
 aufgabe_1/geometry/cmake-build-debug
 aufgabe_1/asteroids/cmake-build-debug
 aufgabe_1/math/cmake-build-debug
 
+aufgabe_2/raytracer/.idea
+aufgabe_2/raytracer_ver_2/.idea
+aufgabe_2/raytracer_ver_3/.idea
 aufgabe_1/asteroids/.idea/
 aufgabe_1/geometry/.idea/
 aufgabe_1/math/.idea/
