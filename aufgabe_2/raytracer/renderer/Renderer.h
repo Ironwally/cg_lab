@@ -25,14 +25,19 @@ public:
             SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0, &window, &renderer);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
             SDL_RenderClear(renderer);
-            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-            for (i = 0; i < WINDOW_WIDTH; ++i)
-                SDL_RenderDrawPoint(renderer, i, i);
-            SDL_RenderPresent(renderer);
-            while (1) {
-                if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
-                    break;
+
+            auto pixels = camera.screen.getAllPixels();
+            for (i = 0; i < pixels.size(); ++i) {
+                // first pixel gets ignored I don't know why
+                Vectorclr pixel = pixels[i];
+                int x = i%camera.screen.width;
+                int y = i/camera.screen.width;
+                SDL_SetRenderDrawColor(renderer, pixel[0], pixel[1], pixel[2], 255);
+                SDL_RenderDrawPoint(renderer, x, y);
             }
+            SDL_RenderPresent(renderer);
+
+            SDL_Delay(80000);
             SDL_DestroyRenderer(renderer);
             SDL_DestroyWindow(window);
             SDL_Quit();

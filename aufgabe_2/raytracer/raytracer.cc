@@ -1,24 +1,35 @@
 #include "math.h"
-#include "geometry.h"
+#include "geometry/geometry.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-#include "raytracer/objects/Screen.h"
-#include "raytracer/configuration/configuration.h"
-#include "raytracer/objects/Camera.h"
-#include "raytracer/objects/Sphere3d.h"
-#include "raytracer/renderer/Renderer.h"
-#include "raytracer/tracer/Tracer.h"
+#include "renderer/Screen.h"
+#include "configuration/configuration.h"
+#include "renderer/Camera.h"
+#include "objects/Sphere3d.h"
+#include "renderer/Renderer.h"
+#include "tracer/Tracer.h"
 
 
 // Die folgenden Kommentare beschreiben Datenstrukturen und Funktionen
 // Die Datenstrukturen und Funktionen die weiter hinten im Text beschrieben sind,
 // hängen höchstens von den vorhergehenden Datenstrukturen ab, aber nicht umgekehrt.
 
-int main(void) {
+int main(int argc, char** args) {
   // Konfiguration
   // Bildschirm erstellen
+  int width = 1024;
+  int height = 768;
+  Screen screen(width, height, {0,0,0});
+
+  Camera camera = Camera(screen, 60, MAX_RAY_RECURSION_DEPTH);
+  const Scene scene = Scene();
+  const Renderer renderer = Renderer();
+
+  camera.trace(scene);
+  renderer.renderSDL(camera);
+
 
   //auto screen = Screen(1024, 768);
   //std::vector<Vector3df, int> screen = {Vector3df({0,0,0}),{0}};
@@ -30,7 +41,6 @@ int main(void) {
 
 
   // Create camera
-  const auto camera = Camera(60);
   // Eine "Kamera", die von einem Augenpunkt aus in eine Richtung senkrecht auf ein Rechteck (das Bild) zeigt.
   // Für das Rechteck muss die Auflösung oder alternativ die Pixelbreite und -höhe bekannt sein.
   // Für ein Pixel mit Bildkoordinate kann ein Sehstrahl erzeugt werden.
@@ -44,15 +54,10 @@ int main(void) {
 
   // Create material
   // Das "Material" der Objektoberfläche mit ambienten, diffusem und reflektiven Farbanteil.
-
-  //Done
+  // Done
 
   // Create 3d objects
-  const auto sphere = Sphere3df({5,0,0}, 5);
-  const auto material = Material({0,0,0},{0,0,0},{0,0,0},0);
-  const auto sphere1 = Sphere3d(sphere, material);
 
-  const std::vector<Sphere3d> sceneSpheres = {sphere1};
   // Ein "Objekt", z.B. eine Kugel oder ein Dreieck, und dem zugehörigen Material der Oberfläche.
   // Im Prinzip ein Wrapper-Objekt, das mindestens Material und geometrisches Objekt zusammenfasst.
   // Kugel und Dreieck finden Sie in geometry.h/tcc
@@ -63,18 +68,12 @@ int main(void) {
   // verschiedene Materialdefinition, z.B. Mattes Schwarz, Mattes Rot, Reflektierendes Weiss, ...
   // im wesentlichen Variablen, die mit Konstruktoraufrufen initialisiert werden.
 
-  //TODO
+  // Done in configuration
 
-  // ??
   // Die folgenden Werte zur konkreten Objekten, Lichtquellen und Funktionen, wie Lambertian-Shading
   // oder die Suche nach einem Sehstrahl für das dem Augenpunkt am nächsten liegenden Objekte,
   // können auch zusammen in eine Datenstruktur für die gesammte zu
   // rendernde "Szene" zusammengefasst werden.
-
-  // Create cornelbox/3d scene
-
-  //TODO someho put together trianges and spheres
-  //const std::vector<Object3d> scene = {sphere1};
 
   // Die Cornelbox aufgebaut aus den Objekten
   // Am besten verwendet man hier einen std::vector< ... > von Objekten.
@@ -95,7 +94,9 @@ int main(void) {
   // Am besten einen Zeiger auf das Objekt zurückgeben. Wenn dieser nullptr ist, dann gibt es kein sichtbares Objekt.
 
   // Create tracer
-  auto tracer = Tracer(camera, sceneSpheres);
+  //auto tracer = Tracer(camera, Scene);
+  // Do via Camera?
+
   // The raytracing method. What does this mobjectsean? Raytrace EVERYTHING? (All shaders, etc.?)
   // Die rekursive raytracing-Methode. Am besten ab einer bestimmten Rekursionstiefe (z.B. als Parameter übergeben) abbrechen.
 
@@ -110,9 +111,7 @@ int main(void) {
   //   Farbe mit raytracing-Methode bestimmen
   //   Beim Bildschirm die Farbe für Pixel x,y, setzten
 
-  // Generate image
-  const auto renderer = Renderer();
-  renderer.renderSDL(camera);
+  // generate image
 
   //renderer.savePPM(screen, "output.ppm");
   return 0;   

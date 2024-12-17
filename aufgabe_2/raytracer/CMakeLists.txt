@@ -6,43 +6,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_compile_options(-g -Wall -Wextra -Wpedantic -Wl,--stack,16777216)
 
-include_directories("C:/msys64/ucrt64/include")
-link_directories("C:/msys64/ucrt64/lib")
+# Find SDL2 package
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(math_test math_test.cc math.cc
-        geometry_test.cc
-        geometry.tcc
-        geometry.cc
-        math.tcc
-        raytracer.cc
-        raytracer/configuration/configuration.h
-        raytracer/tracer/Tracer.h
-        raytracer/objects/Screen.h
-        raytracer_test.cc
-        raytracer/objects/Camera.h
-        raytracer/objects/Camera.h
-        raytracer/objects/Sphere3d.h
-        raytracer/objects/Material.h
-        raytracer/objects/Triangle3d.h
-        raytracer/objects/Object3d.h
-        raytracer/renderer/renderer.h
+add_executable(raytracer configuration/configuration.h geometry/geometry.cc math/math.cc raytracer.cc
+        renderer/renderer.h
+        objects/Sphere3d.h
+        objects/Material.h
+        tracer/Tracer.h
+        objects/Scene.h
+        logic/HitContext.h
 )
-target_link_libraries(math_test raytracer_test gtest gtest_main)
+target_link_libraries(raytracer ${SDL2_LIBRARIES})
 
-add_executable(raytracer math_test math_test.cc math.cc
-        geometry_test.cc
-        geometry.tcc
-        geometry.cc
-        math.tcc
-        raytracer.cc
-        raytracer/configuration/configuration.h
-        raytracer/tracer/Tracer.h
-        raytracer/objects/Screen.h
-        raytracer_test.cc
-        raytracer/objects/Camera.h
-        raytracer/objects/Camera.h
-        raytracer/objects/Sphere3d.h
-        raytracer/objects/Triangle3d.h
-        raytracer/objects/Object3d.h
-        raytracer/renderer/renderer.h
-)

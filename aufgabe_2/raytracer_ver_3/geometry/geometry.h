@@ -2,7 +2,7 @@
 #define GEOMETRY_H
 
 
-#include "math.h"
+#include "../math/math.h"
 #include <iostream>
 #include <vector>
 
@@ -95,14 +95,12 @@ public:
   FLOAT intersects(const Ray<FLOAT, N> &ray) const;
 
   // returns true iff this Sphere intersects with the given sphere
-  /*
   bool intersects(Sphere<FLOAT, N> sphere) const;
-  */
+
   
-  // returns true iff the given point is inside this Sphere or on its surface
-  /*
+  // returns true if the given point is inside this Sphere or on its surface
   bool inside(const Vector<FLOAT, N> p) const;
-  */
+
 };
 
 template <class FLOAT, size_t N>

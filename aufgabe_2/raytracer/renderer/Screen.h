@@ -5,8 +5,8 @@
 #define BILDSCHIRM_H
 
 
-#include "../../geometry.h"
-#include "../../math.h"
+#include "../geometry/geometry.h"
+#include "../math/math.h"
 #include "../configuration/configuration.h"
 
 struct Pixel {
@@ -20,14 +20,14 @@ private:
     std::vector<Vectorclr> pixels;
     //Vector<Vectorclr, WIDTH * HEIGHT> pixels = {}; //include = {}? // old
 public:
-    Vector3df position{};
+    Vector3df center{};
     int width;
     int height;
     int length;
-    Screen() : Screen(1024,768,{0,0,0}, {0,0,0}) {}
-    Screen(const int width, const int height) : Screen(width, height, {0,0,0}, {0,0,0}) {}
-    explicit Screen(const int width, const int height, const Vectorclr start_color, const Vector3df position) {
-        this->position = position;
+    Screen() : Screen(1024,768,{0,0,0}) {}
+    Screen(const int width, const int height) : Screen(width, height, {0,0,0}) {}
+    explicit Screen(const int width, const int height, const Vectorclr start_color) {
+        this->center = {0,0,0};
         this->width = width;
         this->height = height;
         this->length = width*height;
@@ -37,10 +37,10 @@ public:
         }
     }
 
-    void setPixelColor(Vectorclr color, const int x, const int y) {
+    void setPixelColor(Vectorclr color, int x, int y) {
         pixels[x + y * height] = color;
     }
-    void setPixelColor(Vectorclr color, const int number) {
+    void setPixelColor(Vectorclr color, int number) {
         pixels[number] = color;
     }
 
@@ -49,7 +49,9 @@ public:
         return pixels[x + y * height];
     }
     Vector3df getPixelPosition(const int number) {
-        //TODO return position based on screen (not on position of screen)
+        int x = number % width;
+        int y = number / width;
+        return center + Vector3df{(float) x-width/2, (float) y-height/2, 0};
     }
 
     [[nodiscard]] std::vector<Vectorclr> getAllPixels() const {

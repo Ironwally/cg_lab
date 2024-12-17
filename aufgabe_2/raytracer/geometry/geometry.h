@@ -2,7 +2,7 @@
 #define GEOMETRY_H
 
 
-#include "math.h"
+#include "../math/math.h"
 #include <iostream>
 #include <vector>
 

@@ -1,10 +1,12 @@
 //
-// Created by blackrat on 07.11.24.
+// Created by marti on 16.12.2024.
 //
 
 #ifndef MATERIAL_H
 #define MATERIAL_H
-#include "../../math.h"
+
+#include "../math/math.h"
+
 
 class Material {
     Vector3df ambient, diffuse, specular;
@@ -18,5 +20,7 @@ public:
     {}
 
 };
+
+
 
 #endif //MATERIAL_H

@@ -6,9 +6,8 @@
 #define TRACER_H
 
 #include "../../raytracer/configuration/configuration.h"
-#include "../../raytracer/objects/Screen.h"
-#include "../../raytracer/objects/Camera.h"
-#include "../objects/Object3d.h"
+#include "../renderer/Screen.h"
+#include "../renderer/Camera.h"
 
 class Tracer {
 public:
@@ -17,7 +16,7 @@ public:
     std::vector<Sphere3d> objects;
 
 public:
-    Tracer(/*const Screen& screen,*/const Camera& camera, const std::vector<Sphere3d>& objects) {
+    Tracer(const Screen& screen, const Camera& camera, const std::vector<Sphere3d>& objects): camera(camera) {
         //this->screen = screen;
         this->camera = camera;
         this->objects = objects;
@@ -28,12 +27,12 @@ public:
         const auto pixels = screen->getAllPixels();
         constexpr auto length = sizeof(pixels)/sizeof(pixels[0]);
         for (unsigned long long i=0;i<length;i++) {
-            const auto ray = Ray3df(camera.position, pixels[i]-camera.position);
+            const auto ray = Ray3df(camera.center, pixels[i]-camera.center);
             this->tracePrimary_single(ray);
         }
         std::vector<Ray3df> rays = {};
         for (const auto pixel : screen->getAllPixels()) {
-            auto ray = Ray3df(camera.position, pixel-camera.position);
+            auto ray = Ray3df(camera.center, pixel-camera.center);
             rays.insert(rays.end(), ray);
             this->tracePrimary_single(ray);
         }
