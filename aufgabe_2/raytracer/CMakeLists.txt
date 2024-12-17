@@ -10,13 +10,12 @@ add_compile_options(-g -Wall -Wextra -Wpedantic -Wl,--stack,16777216)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(raytracer configuration/configuration.h geometry/geometry.cc math/math.cc raytracer.cc
-        renderer/renderer.h
+add_executable(raytracer_exe configuration/configuration.h geometry/geometry.cc math/math.cc raytracer.cc
+        renderer/Renderer.h
         objects/Sphere3d.h
         objects/Material.h
         tracer/Tracer.h
         objects/Scene.h
-        logic/HitContext.h
 )
-target_link_libraries(raytracer ${SDL2_LIBRARIES})
+target_link_libraries(raytracer_exe ${SDL2_LIBRARIES})
 

@@ -35,7 +35,7 @@ class Scene {
         objects.push_back(Sphere3d(Sphere3df({-6, -7, -25}, 3), Material(YELLOW, false)));
         objects.push_back(Sphere3d(Sphere3df({6, -7, -25}, 4), Material(ORANGE, true)));
         objects.push_back(Sphere3d(Sphere3df({0, -7, -40}, 2), Material(BLUE, false)));
-        objects.push_back(Sphere3d(Sphere3df({-4, 3, -30}, 4), Material(BLUE, true)));
+        //objects.push_back(Sphere3d(Sphere3df({-4, 3, -30}, 4), Material(BLUE, true)));
         // LightSources
         lightSource = {0, 9, -18};
     }
