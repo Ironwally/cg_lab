@@ -23,9 +23,9 @@ public:
     int max_depth;
 
 public:
-    Camera(const Screen screen) : Camera(screen, 60, 10) {}
-    explicit Camera(const Screen screen, const int fov, const int max_depth) : Camera(screen, fov, max_depth, {0,0,0},{-0.4,0.2,0.7}, 1024, 768) {}
-    explicit Camera(const Screen screen, const int fov, const int max_depth, const Vectorclr position, Vectorclr camera_direction, const int width, const int height): screen(
+    Camera(const Screen& screen) : Camera(screen, 60, 10) {}
+    explicit Camera(const Screen& screen, const int fov, const int max_depth) : Camera(screen, fov, max_depth, {0,0,0},{-0.4,0.2,0.7}, 1024, 768) {}
+    explicit Camera(const Screen& screen, const int fov, const int max_depth, const Vectorclr position, Vectorclr camera_direction, const int width, const int height): screen(
         screen) {
         this->center = position;
         this->max_depth = max_depth;
@@ -52,7 +52,7 @@ public:
         this->pixel00_location = viewportUpperLeft + 0.5f * (gap_u + gap_v);
     }
 
-    void trace(const Scene scene) {
+    void trace(const Scene& scene) {
         std::vector<Vectorclr> pixels = screen.getAllPixels();
         for (size_t i = 0; i < pixels.size(); ++i) {
             const int x = i%screen.width;
@@ -109,48 +109,46 @@ private:
                 const Ray3df reflected_ray(corrected_ray_origin, reflected_direction);
                 color = traceRay(reflected_ray, scene, recursion_depth-1);
             } else {
-                /*
-                std:std::vector<Vector3df> lights;
-                if (!traceShadows(hit, scene)) {
-                    lights.push_back(scene.get_lightSource());
-                };
-                */
                 color = lambertianShading(hit, scene);
             }
         }
         return color;
     }
 
-    bool traceShadows(HitContext& hit, const Scene& scene) {
-        Ray3df shadow_ray(hit.get_intersection_context().intersection, scene.get_lightSource()-hit.get_intersection_context().intersection);
+    bool object_between_light(HitContext& hit, const Scene& scene) {
+        Vector3df lightDir = (scene.get_lightSource() - hit.get_intersection_context().intersection);
+        lightDir.normalize();
+        const Vector3df corrected_ray_origin = hit.get_intersection_context().intersection + 3e-2f * hit.get_intersection_context().normal;
+        Ray3df shadow_ray(corrected_ray_origin, lightDir);
 
-        if (std::optional<HitContext> context = find_next_hit(shadow_ray, scene); context.has_value()) {
+        if (const std::optional<HitContext> context = find_next_hit(shadow_ray, scene); context.has_value()) {
             HitContext shadow_context = context.value();
-            //...
-            return true;
-        } // TODO find nicer way of checking for null than optional ... if()
-        else {
-            return false;
+            const float light_distance = shadow_ray.direction.length();
+            return shadow_context.get_intersection_context().t<light_distance;
         }
+            return false;
 
     }
 
-    Vectorclr lambertianShading(HitContext hit, Scene scene) {
+    Vectorclr lambertianShading(HitContext hit, const Scene& scene) {
         Vectorclr color = BLACK;
         Vector3df lightDir = (scene.get_lightSource() - hit.get_intersection_context().intersection);
         lightDir.normalize();
+
         // compute lambertian reflectance with minimum of 0.3
         float intensity_lambertian = std::max(hit.get_intersection_context().normal * lightDir, 0.3f);
-        //if (traceShadows(hit, scene)) {
-        //    intensity_lambertian = 0.3f;
-        //}
+        if (object_between_light(hit, scene)) {
+            intensity_lambertian = 0.3f;
+        }
         color = hit.get_sphere3d().get_material().get_diffuseColor();
         // scale color by lambertian reflectance to account for diffuse reflection
         color *= intensity_lambertian;
+
+
         return color;
     }
 
-    std::optional<HitContext> find_next_hit(Ray3df ray, Scene scene) {
+    std::optional<HitContext> find_next_hit(const Ray3df& ray, const Scene& scene) {
         Intersection_Context<float, 3> context;
         float minimal_t =std::numeric_limits<float>::max();
         std::optional<HitContext> hit;

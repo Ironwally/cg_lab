@@ -8,7 +8,7 @@
 #include "../../math.h"
 
 const int AMOUNT_RAYS = 10;
-const int MAX_RAY_RECURSION_DEPTH = 5;
+const int MAX_RAY_RECURSION_DEPTH = 2;
 
 // Color vector
 typedef Vector3df Vectorclr;
