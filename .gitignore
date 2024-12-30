@@ -1,5 +1,6 @@
 aufgabe_2/raytracer_eddie
 aufgabe_2/raytracer_eddie2
+aufgabe_2/raytracer_eddie_3
 
 aufgabe_2/raytracer/cmake-build-debug
 aufgabe_2/raytracer_ver_2/cmake-build-debug
@@ -16,3 +17,7 @@ aufgabe_1/geometry/.idea/
 aufgabe_1/math/.idea/
 aufgabe_2/raytracer/.idea/
 .idea
+
+
+aufgabe_3/matrix/cmake-build-debug
+aufgabe_3/matrix/.idea
