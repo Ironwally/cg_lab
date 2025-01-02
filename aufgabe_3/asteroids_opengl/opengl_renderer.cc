@@ -209,7 +209,7 @@ std::vector< std::vector<Vector2df> * > vertice_data = {
                                  {  0.0f,   scale, 0.0f,   0.0f},
                                  {  0.0f,    0.0f, scale,  0.0f},
                                  {  0.0f,    0.0f, 0.0f,   1.0f}
-                               };                                 
+                               };
 
     return translation * rotation * scaling;
   }
@@ -481,19 +481,43 @@ void OpenGLRenderer::render() {
   // transformation to canonical view and from left handed to right handed coordinates
   SquareMatrix4df world_transformation =
                          SquareMatrix4df{
-                           { 2.0f / 1024.0f,           0.0f,            0.0f,  0.0f},
-                           {       0.0f,     -2.0f / 768.0f,            0.0f,  0.0f}, // (negative, because we have a left handed world coord. system)
-                           {       0.0f,               0.0f,  2.0f / 1024.0f,  0.0f},
+                           { 2.0f / window_width,           0.0f,            0.0f,  0.0f},
+                           {       0.0f,     -2.0f / window_height,            0.0f,  0.0f}, // (negative, because we have a left handed world coord. system)
+                           {       0.0f,               0.0f,  2.0f / window_width,  0.0f},
                            {      -1.0f,               1.0f,           -1.0f,  1.0f}
                          };
-                                                 
+
+  // Calculate the center of the window
+  float center_x = window_width / 2.0f;
+  float center_y = window_height / 2.0f;
+
+  // transform world based on ship position
+  SquareMatrix4df combined_transformation = world_transformation;
+  if(game.ship_exists()) {
+    Spaceship* spaceship = game.get_ship();
+    //Vector2df movement_vector = spaceship->get_velocity();
+    Vector2df current_position = spaceship->get_position();
+
+    // Define the translation matrix using the spaceship's position
+    SquareMatrix4df spaceship_position_translation =
+                           SquareMatrix4df{
+                                 { 1.0f, 0.0f, 0.0f, 0.0f},
+                                 { 0.0f, 1.0f, 0.0f, 0.0f},
+                                 { 0.0f, 0.0f, 1.0f, 0.0f},
+                                 { center_x -current_position[0], center_y -current_position[1], 0.0f, 1.0f} // Translate by the spaceship's acceleration
+                           };
+
+    // Combine the translation matrix with the world transformation matrix
+    combined_transformation = world_transformation * spaceship_position_translation;
+  }
+
   glClearColor ( 0.0, 0.0, 0.0, 1.0 );
   glClear ( GL_COLOR_BUFFER_BIT );
-  
+
   debug(2, "remove views for deleted objects");
 
-  // remove all views for typed bodies that have to be deleted 
-  erase_if(views, []( std::unique_ptr<TypedBodyView> & view) { return view->get_typed_body()->is_marked_for_deletion();}); 
+  // remove all views for typed bodies that have to be deleted
+  erase_if(views, []( std::unique_ptr<TypedBodyView> & view) { return view->get_typed_body()->is_marked_for_deletion();});
 
   auto new_bodies = game.get_physics().get_recently_added_bodies();
   for (Body2df * body : new_bodies) {
@@ -501,7 +525,7 @@ void OpenGLRenderer::render() {
     TypedBody * typed_body = static_cast<TypedBody *>(body);
     auto type = typed_body->get_type();
     if (type == BodyType::spaceship) {
-      create( static_cast<Spaceship *>(typed_body), views );
+      create( static_cast<Spaceship *>(typed_body), views);
     } else if (type == BodyType::torpedo ) {
       create( static_cast<Torpedo *>(typed_body), views );
     } else  if (type == BodyType::asteroid) {
@@ -516,10 +540,25 @@ void OpenGLRenderer::render() {
   }
 
   debug(2, "render all views");
-  for (auto & view : views) {
-    view->render( world_transformation );
+  const std::vector<Vector2df> kachels = {
+    {static_cast<float>(-window_width), static_cast<float>(window_height)}, {0.0f, static_cast<float>(window_height)}, {static_cast<float>(window_width), static_cast<float>(window_height)},
+    {static_cast<float>(-window_width), 0.0f}, {0.0f, 0.0f}, {static_cast<float>(window_width), 0.0f},
+    {static_cast<float>(-window_width), static_cast<float>(-window_height)}, {0.0f, static_cast<float>(-window_height)}, {static_cast<float>(window_width), static_cast<float>(-window_height)}
+  };
+  for (auto& kachel : kachels) {
+    SquareMatrix4df kachel_position_translation = {
+               { 1.0f, 0.0f, 0.0f, 0.0f},
+               { 0.0f, 1.0f, 0.0f, 0.0f},
+               { 0.0f, 0.0f, 1.0f, 0.0f},
+               { kachel[0], kachel[1], 0.0f, 1.0f} // Translate by the spaceship's acceleration
+       };
+
+    SquareMatrix4df configured_transformation = combined_transformation * kachel_position_translation;
+    for (auto & view : views) {
+      view->render( configured_transformation );
+    }
   }
-  
+
   renderFreeShips(world_transformation);
   renderScore(world_transformation);
 
@@ -534,4 +573,4 @@ void OpenGLRenderer::exit() {
   SDL_DestroyWindow( window );
   SDL_Quit();
 }
- 
+
