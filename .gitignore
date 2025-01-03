@@ -1,6 +1,10 @@
+.idea
+
+
 aufgabe_2/raytracer_eddie
 aufgabe_2/raytracer_eddie2
 aufgabe_2/raytracer_eddie_3
+
 
 aufgabe_2/raytracer/cmake-build-debug
 aufgabe_2/raytracer_ver_2/cmake-build-debug
@@ -9,6 +13,7 @@ aufgabe_1/geometry/cmake-build-debug
 aufgabe_1/asteroids/cmake-build-debug
 aufgabe_1/math/cmake-build-debug
 
+
 aufgabe_2/raytracer/.idea
 aufgabe_2/raytracer_ver_2/.idea
 aufgabe_2/raytracer_ver_3/.idea
@@ -16,10 +21,13 @@ aufgabe_1/asteroids/.idea/
 aufgabe_1/geometry/.idea/
 aufgabe_1/math/.idea/
 aufgabe_2/raytracer/.idea/
-.idea
 
 
 aufgabe_3/matrix/cmake-build-debug
 aufgabe_3/matrix/.idea
 aufgabe_3/asteroids_opengl/cmake-build-debug
 aufgabe_3/asteroids_opengl/.idea
+aufgabe_3/asteroids_opengl_3d/cmake-build-debug
+aufgabe_3/asteroids_opengl_3d/.idea
+aufgabe_3/viewer/cmake-build-debug
+aufgabe_3/viewer/.idea
