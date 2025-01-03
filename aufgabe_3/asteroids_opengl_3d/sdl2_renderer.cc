@@ -4,14 +4,16 @@
 
 
 void SDL2Renderer::renderSpaceship(Vector2df position, float angle) {
+
+
     static std::array<SDL_Point, 6> ship_points{SDL_Point{-6, 3},
                                               SDL_Point{-6,-3},
                                               SDL_Point{-10,-6},
                                               SDL_Point{ 14, 0},
                                               SDL_Point{-10, 6},
                                               SDL_Point{-6, 3}};
-  
-  std::array<SDL_Point, ship_points.size()> points;
+
+  std::vector<SDL_Point> points;
 
   float cos_angle = std::cos(angle);
   float sin_angle = std::sin(angle);
@@ -46,10 +48,11 @@ void SDL2Renderer::render(Spaceship * ship) {
 }
 
 void SDL2Renderer::render(Saucer * saucer) {
+
   static SDL_Point saucer_points[] = { {-16, -6}, {16, -6}, {40, 6}, {-40, 6}, {-16, 18}, {16, 18},
                                        {40, 6}, {16, -6}, {8, -18}, {-8, -18}, {-16, -6}, {-40, 6} };
-  
-  std::array<SDL_Point, std::span{saucer_points}.size()> points;
+
+  std::vector<SDL_Point> points;
 
   Vector2df position = saucer->get_position();
   float scale = 0.5;

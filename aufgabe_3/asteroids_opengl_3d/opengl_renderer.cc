@@ -3,6 +3,8 @@
 #include <span>
 #include <utility>
 
+#include "wavefront.h"
+
 
 // geometric data as in original game and game coordinates
 std::vector<Vector2df> spaceship = {
@@ -39,6 +41,7 @@ std::vector<Vector2df> saucer_points = {
   Vector2df{-16, -6},
   Vector2df{-40, 6}
 };
+
 
 std::vector<Vector2df> asteroid_1 = {
   Vector2df{ 0, -12},
@@ -415,6 +418,45 @@ static const char *fragmentShaderSource = "#version 330 core\n"
     }
 }
 
+Material default_material = { {1.0f, 1.0f, 1.0f} };
+
+std::vector<float> create_vertices(WavefrontImporter & wi) {
+    std::vector<float> vertices;
+
+    for (Face face : wi.get_faces() ) {
+      if (face.material == nullptr) face.material = &default_material;
+      for (ReferenceGroup group : face.reference_groups ) {
+        for (size_t i = 0; i < 3; i++) {vertices.push_back( group.vertice[i]);}
+        for (size_t i = 0; i < 3; i++) {vertices.push_back( group.normal[i] );}
+        for (size_t i = 0; i < 3; i++) {vertices.push_back( face.material->ambient[i]);}
+      }
+    }
+    return vertices;
+  }
+
+std::vector<Vector2df> get_points(const std::vector<float>& vertices) {
+  std::vector<Vector2df> points;
+    for (size_t i = 0; i < vertices.size(); i += 9) {
+      Vector2df point = {vertices[i], vertices[i+1]};
+      points.push_back(point);
+    }
+    return points;
+  }
+
+std::unordered_map<std::string, std::vector<Vector2df>> load_objects (const std::unordered_map<std::string, std::string> & object_files) {
+    std::unordered_map<std::string, std::vector<Vector2df>> objects;
+    for (auto & file : object_files) {
+      std::fstream in(file.second);
+      if (!in) {
+        error("Failed to open file: " + file.second);
+        continue;
+      }
+      WavefrontImporter wi( in );
+      wi.parse();
+      objects[file.first] = get_points(create_vertices(wi));
+    }
+    return objects;
+  }
 
 
 bool OpenGLRenderer::init() {
@@ -443,6 +485,16 @@ bool OpenGLRenderer::init() {
       debug(1, glewGetString(GLEW_VERSION) );
 
       SDL_GL_SetSwapInterval(1);
+
+      // Aufgabe_3 set graphics
+      auto objects = load_objects({{"spaceship", "../spaceship.obj"}, {"saucer", "asteroid_2b.obj"}, {"asteroid", "asteroid_2b.obj"}});
+      vertice_data = {
+        &objects["spaceship"], &flame,
+        &torpedo_points, &objects["saucer"],
+        &objects["asteroid"], &asteroid_2, &asteroid_3, &asteroid_4,
+        &spaceship_debris, &spaceship_debris_direction,
+        &debris_points,
+        &digit_0, &digit_1, &digit_2, &digit_3, &digit_4, &digit_5, &digit_6, &digit_7, &digit_8, &digit_9 };
 
       create_shader_programs();
       createVbos();

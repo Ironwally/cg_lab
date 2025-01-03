@@ -2,6 +2,7 @@
 #include "debug.h"
 #include <iostream>
 #include <algorithm>
+#include <GL/glew.h>
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = (SCREEN_WIDTH * 3) / 4;

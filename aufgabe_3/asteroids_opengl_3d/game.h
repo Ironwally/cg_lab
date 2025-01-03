@@ -221,6 +221,7 @@ class Game {
   void remove(Saucer * saucer);
 public:
   Game();
+
   void tick(float tick_time);
   void ship_shoots();
   void hyperspace();

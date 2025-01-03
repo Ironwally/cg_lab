@@ -9,6 +9,17 @@
 #include "sdl2_game_controller.h"
 #include <memory>
 
+#include <fstream>
+#include <GL/glew.h>
+#include <SDL2/SDL.h>
+#include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <vector>
+#include <fstream>
+#include <array>
+#include "wavefront.h"
+
 #include "debug.h"
 
 #ifdef _WIN32
@@ -27,7 +38,6 @@ int main(void) {
   Timer timer;
   Game game{};
   SDL2GameController controller = SDL2GameController{game};
-  //std::unique_ptr<Renderer> renderer = std::make_unique<SDL2Renderer>(game, "Asteroids");
   std::unique_ptr<Renderer> renderer = std::make_unique<OpenGLRenderer>(game, "Asteroids", 1024, 768);
   renderer->init();
   do {

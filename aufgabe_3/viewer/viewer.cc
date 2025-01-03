@@ -265,7 +265,7 @@ std::vector<float> create_vertices(WavefrontImporter & wi) {
       for (size_t i = 0; i < 3; i++) {
         vertices.push_back( face.material->ambient[i]);
       }
-    } 
+    }
   }
   return vertices;
 }
