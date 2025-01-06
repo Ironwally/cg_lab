@@ -423,7 +423,9 @@ Material default_material = { {1.0f, 1.0f, 1.0f} };
 std::vector<float> create_vertices(WavefrontImporter & wi) {
     std::vector<float> vertices;
 
-    for (Face face : wi.get_faces() ) {
+    // for methode geaendert fuer debugging. nach debugging wieder zurueck machen zu for each
+    for (size_t i = 0; i < wi.get_faces().size(); ++i) {
+      Face face = wi.get_faces()[i];
       if (face.material == nullptr) face.material = &default_material;
       for (ReferenceGroup group : face.reference_groups ) {
         for (size_t i = 0; i < 3; i++) {vertices.push_back( group.vertice[i]);}
@@ -487,11 +489,11 @@ bool OpenGLRenderer::init() {
       SDL_GL_SetSwapInterval(1);
 
       // Aufgabe_3 set graphics
-      auto objects = load_objects({{"spaceship", "../spaceship.obj"}, {"saucer", "asteroid_2b.obj"}, {"asteroid", "asteroid_2b.obj"}});
+      auto objects = load_objects({{"spaceship", "teapot.obj"} /*, {"saucer", "teapot.obj"}, {"asteroid", "teapot.obj"}*/});
       vertice_data = {
         &objects["spaceship"], &flame,
-        &torpedo_points, &objects["saucer"],
-        &objects["asteroid"], &asteroid_2, &asteroid_3, &asteroid_4,
+        &torpedo_points, &saucer_points,
+        &asteroid_1, &asteroid_2, &asteroid_3, &asteroid_4,
         &spaceship_debris, &spaceship_debris_direction,
         &debris_points,
         &digit_0, &digit_1, &digit_2, &digit_3, &digit_4, &digit_5, &digit_6, &digit_7, &digit_8, &digit_9 };

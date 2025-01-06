@@ -83,7 +83,9 @@ void WavefrontImporter::parse_face() {
   in >> v1;
   if (in.peek() == '/') in.ignore(); // no texture coordinates supported
   if (in.peek() == '/') { in.ignore(); in >> vn1;}
+  //debug(0, "Next char read at position: " + std::to_string(in.tellg()/input_line) + " at line: " + std::to_string(input_line));
   in >> v2;
+  //debug(0, v2);
   if (in.peek() == '/') in.ignore(); 
   if (in.peek() == '/') { in.ignore(); in >> vn2;}
   in >> v3;
@@ -94,6 +96,12 @@ void WavefrontImporter::parse_face() {
     warning("no normals given");
     // calculate normal not done
     Normal normal = {1.0f, 1.0f, 1.0f};
+
+    // aufgabe_3 Best error handhling ever: if v1/2/3 is too big, set it to their max
+    if (v1>=vertices.size()) v1 = vertices.size();
+    if (v2>=vertices.size()) v2 = vertices.size();
+    if (v3>=vertices.size()) v3 = vertices.size();
+
     face.reference_groups.push_back( { vertices.at(v1 - 1), normal } );
     face.reference_groups.push_back( { vertices.at(v2 - 1), normal } );
     face.reference_groups.push_back( { vertices.at(v3 - 1), normal } );

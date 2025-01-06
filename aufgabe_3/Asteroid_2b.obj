@@ -1,6 +1,6 @@
 # Blender 4.3.2
 # www.blender.org
-mtllib Asteroid_2b.mtl
+mtllib asteroid_2b.mtl
 o Asteroid_2b
 v 0.250176 0.028474 0.949084
 v 0.152251 -0.148990 0.935062

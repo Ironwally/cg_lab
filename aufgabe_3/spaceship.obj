@@ -1,6 +1,6 @@
 # Blender 4.3.2
 # www.blender.org
-mtllib aufgabe_3_spaceship.mtl
+mtllib spaceship.mtl
 o Cube
 v 0.151633 0.399106 0.178631
 v 0.149351 0.400627 0.478258

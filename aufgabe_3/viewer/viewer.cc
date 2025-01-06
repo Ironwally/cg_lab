@@ -252,8 +252,8 @@ Material default_material = { {1.0f, 1.0f, 1.0f} };
 */     
 std::vector<float> create_vertices(WavefrontImporter & wi) {
   std::vector<float> vertices;
-  
-  for (Face face : wi.get_faces() ) {
+
+  for (auto &face : wi.get_faces()) {
     for (ReferenceGroup group : face.reference_groups ) {
       for (size_t i = 0; i < 3; i++) {
         vertices.push_back( group.vertice[i]);
