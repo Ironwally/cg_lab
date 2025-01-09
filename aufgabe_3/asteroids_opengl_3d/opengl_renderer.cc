@@ -489,13 +489,13 @@ bool OpenGLRenderer::init() {
       SDL_GL_SetSwapInterval(1);
 
       // Aufgabe_3 set graphics
-      auto objects = load_objects({{"spaceship", "teapot.obj"} /*, {"saucer", "teapot.obj"}, {"asteroid", "teapot.obj"}*/});
+      auto objects = load_objects({{"spaceship", "spaceship_oesterle.obj"}, {"saucer", "saucer.obj"}, {"asteroid", "asteroid.obj"}, {"spaceship_boost","spaceship_boost.obj"}, {"debris","debris.obj"}, {"torpedo","torpedo.obj"} });
       vertice_data = {
-        &objects["spaceship"], &flame,
-        &torpedo_points, &saucer_points,
-        &asteroid_1, &asteroid_2, &asteroid_3, &asteroid_4,
+        &objects["spaceship"], &objects["spaceship_boost"],
+        &objects["torpedo"], &objects["saucer"],
+        &objects["asteroid"], &objects["asteroid"], &objects["asteroid"], &objects["asteroid"],
         &spaceship_debris, &spaceship_debris_direction,
-        &debris_points,
+        &objects["debris"],
         &digit_0, &digit_1, &digit_2, &digit_3, &digit_4, &digit_5, &digit_6, &digit_7, &digit_8, &digit_9 };
 
       create_shader_programs();

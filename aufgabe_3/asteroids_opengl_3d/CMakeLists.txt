@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_compile_options(-g -Wall -Wextra -Wpedantic -Wl,--stack,16777216)
 
 # Find SDL2 package
-#find_package(SDL2 REQUIRED)
-#include_directories(${SDL2_INCLUDE_DIRS})
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
 
 add_executable(main_game main_game.cc
         game.cc
@@ -22,8 +22,8 @@ add_executable(main_game main_game.cc
         sound.cc
         timer.cc)
 
-target_link_libraries(main_game SDL2 SDL2_mixer OPENGL32 GLEW32) # MinGW
-#target_link_libraries(main_game SDL2 SDL2_mixer GL GLEW ${SDL2_INCLUDE_DIRS}) # Linux
+#target_link_libraries(main_game SDL2 SDL2_mixer OPENGL32 GLEW32) # MinGW
+target_link_libraries(main_game SDL2 SDL2_mixer GL GLEW ${SDL2_INCLUDE_DIRS}) # Linux
 
 enable_testing()
 add_executable(math_test math_test.cc math.cc)
