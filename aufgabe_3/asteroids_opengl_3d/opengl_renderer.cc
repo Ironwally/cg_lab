@@ -490,6 +490,8 @@ bool OpenGLRenderer::init() {
 
       // Aufgabe_3 set graphics
       auto objects = load_objects({{"spaceship", "spaceship_oesterle.obj"}, {"saucer", "saucer.obj"}, {"asteroid", "asteroid.obj"}, {"spaceship_boost","spaceship_boost.obj"}, {"debris","debris.obj"}, {"torpedo","torpedo.obj"} });
+
+      /*
       vertice_data = {
         &objects["spaceship"], &objects["spaceship_boost"],
         &objects["torpedo"], &objects["saucer"],
@@ -497,7 +499,7 @@ bool OpenGLRenderer::init() {
         &spaceship_debris, &spaceship_debris_direction,
         &objects["debris"],
         &digit_0, &digit_1, &digit_2, &digit_3, &digit_4, &digit_5, &digit_6, &digit_7, &digit_8, &digit_9 };
-
+      */
       create_shader_programs();
       createVbos();
       createSpaceShipView();
